@@ -1,41 +1,17 @@
-import "./css/style.css";
-
-import { Inter } from "next/font/google";
-import localFont from "next/font/local";
-
-import Header from "@/components/ui/header";
-
+// app/layout.tsx
+import { Geist_Mono, Inter } from "next/font/google";
+import "./css/globals.css";
+import { Header } from "@/components/ui/header";
+import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variables: "--font-inter",
   display: "swap",
 });
 
-const nacelle = localFont({
-  src: [
-    {
-      path: "../public/fonts/nacelle-regular.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/nacelle-italic.woff2",
-      weight: "400",
-      style: "italic",
-    },
-    {
-      path: "../public/fonts/nacelle-semibold.woff2",
-      weight: "600",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/nacelle-semibolditalic.woff2",
-      weight: "600",
-      style: "italic",
-    },
-  ],
-  variable: "--font-nacelle",
-  display: "swap",
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
 });
 
 export const metadata = {
@@ -49,14 +25,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${nacelle.variable} bg-gray-950 font-inter text-base text-gray-200 antialiased`}
+        className={`
+          ${inter.variable} 
+          ${geistMono.variable} 
+          bg-white text-gray-900 
+          dark:bg-gray-950 dark:text-gray-200 
+          antialiased
+        `}
       >
-        <div className="flex min-h-screen flex-col overflow-hidden supports-[overflow:clip]:overflow-clip">
-          {/* <Header /> */}
-          {children}
-        </div>
+         <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+
+    
+            <Header />
+            <main>{children}</main>
+      
+       </ThemeProvider>
       </body>
     </html>
   );
