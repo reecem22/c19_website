@@ -1,17 +1,14 @@
 // app/layout.tsx
-import { Geist_Mono, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./css/globals.css";
 import { Header } from "@/components/ui/header";
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from "@/components/theme-provider";
+
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter",
   display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-inter",
+  preload: false,
 });
 
 export const metadata = {
@@ -28,25 +25,22 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={`
-          ${inter.variable} 
-          ${geistMono.variable} 
+          ${inter.className} 
           bg-white text-gray-900 
-          dark:bg-gray-950 dark:text-gray-200 
+          dark:bg-black dark:text-gray-200 
           antialiased
         `}
       >
-         <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
-
-    
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+        >
+          <div className="flex min-h-screen flex-col overflow-hidden supports-[overflow:clip]:overflow-clip">
             <Header />
             <main>{children}</main>
-      
-       </ThemeProvider>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
