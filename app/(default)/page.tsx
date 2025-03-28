@@ -1,6 +1,7 @@
 import PageIllustration from "@/components/ui/page-illustration";
 import Hero from "@/components/ui/hero-home";
 import WorkFlows from "@/components/ui/workflow";
+import Features from "@/components/ui/features";
 
 export const metadata = {
   title: "Home - Open PRO",
@@ -13,6 +14,7 @@ export default function Home() {
       <PageIllustration />
       <Hero />
       <WorkFlows/>
+      <Features/>
 
     </>
   );

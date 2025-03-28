@@ -1,4 +1,4 @@
-import HeroImg from "@/public/images/Cloud_Red.png";
+import HeroImg from "@/public/images/placeholder_image2.png";
 import HeroImage from "@/components/hero-image";
 
 export default function HeroHome() {
@@ -28,8 +28,8 @@ export default function HeroHome() {
 
           <HeroImage
             thumb={HeroImg}
-            thumbHeight={576}
-            thumbWidth={1000}
+            thumbHeight={1200}
+            thumbWidth={1900}
             thumbAlt="Modal video thumbnail"
           />
         </div>
