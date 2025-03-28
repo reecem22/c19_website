@@ -184,7 +184,7 @@ export const Header = () => {
                 Get in touch
               </Button>
               <div className="border-r hidden md:inline"></div>
-              <Button>Get started</Button>
+              <Button>Login</Button>
             </div>
           </div>
         </div>

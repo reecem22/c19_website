@@ -1,5 +1,5 @@
 import Image from "next/image";
-import placeholder from "@/public/images/placeholder.png";
+import placeholder from "@/public/images/placeholder_image2.png";
 import Spotlight from "@/components/spotlight";
 
 export default function Workflows() {
@@ -10,17 +10,19 @@ export default function Workflows() {
           {/* Section header */}
           <div className="mx-auto max-w-3xl pb-12 text-center md:pb-20">
             <div className="inline-flex items-center gap-3 pb-3 before:h-px before:w-8 before:bg-linear-to-r before:from-transparent before:to-orange-200/50 after:h-px after:w-8 after:bg-linear-to-l after:from-transparent after:to-orange-200/50">
-              <span className="inline-flex bg-linear-to-r from-orange-500 to-orange-200 bg-clip-text text-transparent">
-                Tailored Workflows
+              <span className="bg-gradient-to-r from-orange-500 to-red-200 bg-clip-text text-transparent">
+                Our Services
               </span>
             </div>
             <h2 className="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,var(--color-gray-200),var(--color-rose-200),var(--color-gray-50),var(--color-rose-300),var(--color-gray-200))] bg-[length:200%_auto] bg-clip-text pb-4 font-nacelle text-3xl font-semibold text-transparent md:text-4xl">
-              Map your product journey
+              Empower Your Digital Future
             </h2>
-            <p className="text-lg text-orange-200/65">
-              Simple and elegant interface to start collaborating with your team
-              in minutes. It seamlessly integrates with your code and your
-              favorite programming languages.
+            <p className="text-lg text-red-200/65">
+              Transform your business with our integrated digital solutions. We
+              create captivating websites that reflect your brand, leverage
+              powerful data insights to drive smarter decisions, and ensure
+              secure, scalable cloud integration to streamline your operations.
+              Let&apos;s build your digital future together—contact us today!
             </p>
           </div>
           {/* Spotlight items */}
@@ -59,15 +61,19 @@ export default function Workflows() {
                 {/* Content */}
                 <div className="p-6">
                   <div className="mb-3">
-                    <span className="btn-sm relative rounded-full bg-black-800/40 px-2.5 py-0.5 text-xs font-normal before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(to_bottom,--theme(--color-gray-700/.15),--theme(--color-gray-700/.5))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)] hover:bg-gray-800/60">
-                      <span className="bg-linear-to-r from-orange-500 to-orange-200 bg-clip-text text-transparent">
-                        Built-in Tools
+                    <span
+                      typeof="button"
+                      className=" relative rounded-full bg-gray-800/40 px-2.5 py-0.5 text-xs font-normal before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(to_bottom,--theme(--color-gray-700/.15),--theme(--color-gray-700/.5))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)] hover:bg-gray-800/60"
+                    >
+                      <span className="bg-gradient-to-r from-orange-500 to-red-200 bg-clip-text text-transparent">
+                        Data Analysis
                       </span>
                     </span>
                   </div>
-                  <p className="text-orange-200/65">
-                    Streamline the product development flow with a content
-                    platform that&apos;s aligned across specs and insights.
+                  <p className="text-red-200/65">
+                    Turn raw data into strategic insights. Our data analysis
+                    services help you uncover trends and make smarter decisions.
+                    Unlock your business potential—connect with us now!
                   </p>
                 </div>
               </div>
@@ -106,15 +112,17 @@ export default function Workflows() {
                 {/* Content */}
                 <div className="p-6">
                   <div className="mb-3">
-                    <span className="btn-sm relative rounded-full bg-gray-800/40 px-2.5 py-0.5 text-xs font-normal before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(to_bottom,--theme(--color-gray-700/.15),--theme(--color-gray-700/.5))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)] hover:bg-gray-800/60">
-                      <span className="bg-linear-to-r from-orange-500 to-orange-200 bg-clip-text text-transparent">
-                        Scale Instantly
+                    <span className=" relative rounded-full bg-gray-800/40 px-2.5 py-0.5 text-xs font-normal before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(to_bottom,--theme(--color-gray-700/.15),--theme(--color-gray-700/.5))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)] hover:bg-gray-800/60">
+                      <span className="bg-gradient-to-r from-orange-500 to-orange-200 bg-clip-text text-transparent">
+                        Cloud Solutions
                       </span>
                     </span>
                   </div>
-                  <p className="text-orange-200/65">
-                    Streamline the product development flow with a content
-                    platform that&apos;s aligned across specs and insights.
+                  <p className="text-red-200/65">
+                    Modernize your operations with smooth, scalable cloud
+                    integration. We streamline your systems for enhanced
+                    efficiency and security. Elevate your business—get started
+                    with our cloud solutions today!
                   </p>
                 </div>
               </div>
@@ -154,14 +162,16 @@ export default function Workflows() {
                 <div className="p-6">
                   <div className="mb-3">
                     <span className="btn-sm relative rounded-full bg-gray-800/40 px-2.5 py-0.5 text-xs font-normal before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(to_bottom,--theme(--color-gray-700/.15),--theme(--color-gray-700/.5))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)] hover:bg-gray-800/60">
-                      <span className="bg-linear-to-r from-orange-500 to-orange-200 bg-clip-text text-transparent">
-                        Tailored Flows
+                      <span className="bg-gradient-to-r from-orange-500 to-orange-200 bg-clip-text text-transparent">
+                        Web development
                       </span>
                     </span>
                   </div>
-                  <p className="text-orange-200/65">
-                    Streamline the product development flow with a content
-                    platform that&apos;s aligned across specs and insights.
+                  <p className="text-red-200/65">
+                    Bring your vision to life with a website that stands out.
+                    Our expert developers craft seamless, responsive designs
+                    tailored to your brand. Let&apos;s build your digital
+                    future—start today!
                   </p>
                 </div>
               </div>
