@@ -1,0 +1,14 @@
+<!-- src/assets/SecurityIcon.svg -->
+<svg width="1200" height="1200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+  <g transform="scale(36.00000000000001) translate(0.6666666666666663, 0.6666666666666663)">
+    <g fill="#ff5722">
+      <title>Security</title>
+      <path d="M1,29a2,2,0,0,0,2,2H8V22H1Z" />
+      <path d="M29,1H26a2,2,0,0,0-2,2V6H20V3a2,2,0,0,0-2-2H14a2,2,0,0,0-2,2V6H8V3A2,2,0,0,0,6,1H3A2,2,0,0,0,1,3v8H31V3A2,2,0,0,0,29,1Z" />
+      <polygon points="10 29 10 31 22 31 22 29 22 22 10 22 10 29" />
+      <rect x="17" y="13" width="14" height="7" />
+      <rect x="1" y="13" width="14" height="7" />
+      <path d="M24,31h5a2,2,0,0,0,2-2V22H24Z" />
+    </g>
+  </g>
+</svg>
