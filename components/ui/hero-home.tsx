@@ -1,4 +1,4 @@
-import HeroImg from "@/public/images/placeholder_image2.png";
+import HeroImg from "@/public/images/2614156c-6194-4a70-8a73-74fc857f3cdd.png";
 import HeroImage from "@/components/hero-image";
 
 export default function HeroHome() {
