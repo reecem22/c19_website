@@ -20,7 +20,7 @@ export default function HeroHome() {
                 className="mb-8 text-xl text-orange-300/65"
                 data-aos="zoom-out-up"
               >
-                Some text here placeholder
+                Transform. Scale. Succeed.
               </p>
 
             </div>

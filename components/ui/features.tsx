@@ -1,7 +1,7 @@
 import Image from "next/image";
 import BlurredShapeGray from "@/public/images/blurred-shape-gray.svg";
 import BlurredShape from "@/public/images/blurred-shape.svg";
-import placeholder from "@/public/images/placeholder_image2.png";
+import placeholder from "@/public/images/telstra_tower.png";
 
 export default function Features() {
   return (
@@ -48,15 +48,15 @@ export default function Features() {
               growth every day.
             </p>
           </div>
-          <div className="flex justify-center pb-4 md:pb-12" data-aos="fade-up">
+          {/* <div className="flex justify-center pb-4 md:pb-12" data-aos="fade-up">
             <Image
               className="max-w-none"
               src={placeholder}
-              width={1200}
-              height={1900}
+              width={1000}
+    
               alt="Features"
             />
-          </div>
+          </div> */}
           {/* Items */}
           <div className="mx-auto grid max-w-sm gap-12 sm:max-w-none sm:grid-cols-2 md:gap-x-14 md:gap-y-16 lg:grid-cols-3">
             <article>

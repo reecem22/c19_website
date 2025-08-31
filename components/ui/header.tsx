@@ -1,5 +1,11 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { Menu, MoveRight, X } from "lucide-react";
+import { ThemeProvider } from "@/components/theme-provider";
+import Logo from "./logo";
+
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -9,92 +15,74 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { ThemeProvider } from "@/components/theme-provider";
-import { Menu, MoveRight, X } from "lucide-react";
-import { useState } from "react";
-import Link from "next/link";
-import Logo from "./logo";
 
 export const Header = () => {
   const navigationItems = [
+    { title: "Home", href: "/", description: "" },
     {
-      title: "Home",
-      href: "/",
-      description: "",
-    },
-    {
-      title: "Product",
+      title: "Services",
       description: "Managing a small business today is already tough.",
       items: [
-        {
-          title: "Reports",
-          href: "/reports",
-        },
-        {
-          title: "Statistics",
-          href: "/statistics",
-        },
-        {
-          title: "Dashboards",
-          href: "/dashboards",
-        },
-        {
-          title: "Recordings",
-          href: "/recordings",
-        },
+        { title: "Data Analysis", href: "/reports" },
+        { title: "Cloud Solutions", href: "/statistics" },
+        { title: "Web Development", href: "/dashboards" },
       ],
     },
     {
       title: "Company",
       description: "Managing a small business today is already tough.",
       items: [
-        {
-          title: "About us",
-          href: "/about",
-        },
-        {
-          title: "Fundraising",
-          href: "/fundraising",
-        },
-        {
-          title: "Investors",
-          href: "/investors",
-        },
-        {
-          title: "Contact us",
-          href: "/contact",
-        },
+        { title: "About us", href: "/about" },
+        { title: "Blog", href: "/fundraising" },
+        { title: "Contact us", href: "/contact" },
       ],
     },
   ];
 
   const [isOpen, setOpen] = useState(false);
+
+  // Close on Esc & lock scroll when menu is open
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    if (isOpen) {
+      document.addEventListener("keydown", onKey);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   return (
     <ThemeProvider>
       <header className="z-30 mt-2 w-full md:mt-5">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div
-            className="relative flex h-14 items-center justify-between gap-3 rounded-lg px-3
-  before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent
-  before:[background:linear-gradient(to_right,var(--citadel-orange),var(--color-rose-700),var(--color-rose-800))_border-box]
-  before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)]
-  after:absolute after:inset-0 after:-z-10 after:backdrop-blur-xs"
-          >
-            {/* Site branding */}
-
+<div
+  className="relative flex h-14 items-center justify-between gap-3
+             rounded-lg g px-3
+             before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent
+             before:[background:linear-gradient(to_right,var(--citadel-orange),var(--color-rose-700),var(--color-rose-800))_border-box]
+             before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)]
+             after:absolute after:inset-0 after:-z-10 after:backdrop-blur-xs"
+>
+            {/* Left: branding + desktop nav */}
             <div className="flex flex-1 items-center">
-              <div className="justify-start items-center gap-4 lg:flex hidden flex-row">
+              {/* Desktop (lg+) */}
+              <div className="hidden lg:flex items-center gap-4">
                 <Logo />
-                <NavigationMenu className="flex justify-start items-start">
-                  <NavigationMenuList className="flex justify-start gap-4 flex-row">
+                <NavigationMenu className="flex items-center">
+                  <NavigationMenuList>
                     {navigationItems.map((item) => (
                       <NavigationMenuItem key={item.title}>
                         {item.href ? (
-                          <>
-                            <NavigationMenuLink>
+                          <NavigationMenuLink asChild>
+                            <Link href={item.href}>
                               <Button variant="ghost">{item.title}</Button>
-                            </NavigationMenuLink>
-                          </>
+                            </Link>
+                          </NavigationMenuLink>
                         ) : (
                           <>
                             <NavigationMenuTrigger className="font-medium text-sm bg-transparent">
@@ -114,14 +102,18 @@ export const Header = () => {
                                   </Button>
                                 </div>
                                 <div className="flex flex-col text-sm h-full justify-end">
-                                  {item.items?.map((subItem) => (
+                                  {item.items?.map((sub) => (
                                     <NavigationMenuLink
-                                      href={subItem.href}
-                                      key={subItem.title}
-                                      className="flex flex-row justify-between items-center hover:bg-muted py-2 px-4 rounded"
+                                      asChild
+                                      key={sub.title}
                                     >
-                                      <span>{subItem.title}</span>
-                                      <MoveRight className="w-4 h-4 text-muted-foreground" />
+                                      <Link
+                                        href={sub.href}
+                                        className="flex flex-row justify-between items-center hover:bg-muted py-2 px-4 rounded"
+                                      >
+                                        <span>{sub.title}</span>
+                                        <MoveRight className="w-4 h-4 text-muted-foreground" />
+                                      </Link>
                                     </NavigationMenuLink>
                                   ))}
                                 </div>
@@ -135,173 +127,96 @@ export const Header = () => {
                 </NavigationMenu>
               </div>
 
-              <div className="flex w-12 shrink lg:hidden items-end justify-end">
-                <Button variant="ghost" onClick={() => setOpen(!isOpen)}>
-                  {isOpen ? (
-                    <X className="w-5 h-5" />
-                  ) : (
-                    <Menu className="w-5 h-5" />
-                  )}
+              {/* Mobile: menu button */}
+              <div className="lg:hidden ml-auto">
+                <Button
+                  variant="ghost"
+                  onClick={() => setOpen((v) => !v)}
+                  aria-expanded={isOpen}
+                  aria-controls="mobile-menu"
+                  aria-label={isOpen ? "Close menu" : "Open menu"}
+                >
+                  {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                 </Button>
-                {isOpen && (
-                  <div className="absolute top-20 border-t flex flex-col w-full right-0 bg-background shadow-lg py-8 container gap-8">
-                    {navigationItems.map((item) => (
-                      <div key={item.title}>
-                        <div className="flex flex-col gap-2">
-                          {item.href ? (
-                            <Link
-                              href={item.href}
-                              className="flex justify-between items-center"
-                            >
-                              <span className="text-lg">{item.title}</span>
-                              <MoveRight className="w-4 h-4 stroke-1 text-muted-foreground" />
-                            </Link>
-                          ) : (
-                            <p className="text-lg mx-2">{item.title}</p>
-                          )}
-                          {item.items &&
-                            item.items.map((subItem) => (
-                              <Link
-                                key={subItem.title}
-                                href={subItem.href}
-                                className="flex justify-between items-center mx-2"
-                              >
-                                <span className="text-muted-foreground">
-                                  {subItem.title}
-                                </span>
-                                <MoveRight className="w-4 h-4 stroke-1" />
-                              </Link>
-                            ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
               </div>
             </div>
-            <div className="flex justify-end w-full gap-4">
-              <Button variant="ghost" className="hidden md:inline">
-                Get in touch
-              </Button>
-              <div className="border-r hidden md:inline"></div>
+
+            {/* Right actions */}
+            <div className="hidden md:flex justify-end w-full gap-4">
+              <Button variant="ghost">Get in touch</Button>
+              <div className="border-r" />
               <Button>Login</Button>
             </div>
+
+            {/* Mobile floating menu (overlay + card) */}
+            {isOpen && (
+              <>
+                {/* Overlay */}
+                <button
+                  aria-label="Close menu"
+                  onClick={() => setOpen(false)}
+                  className="fixed inset-0 z-40 bg-black/40 lg:hidden"
+                />
+
+                {/* Card */}
+                <div
+                  id="mobile-menu"
+                  role="dialog"
+                  aria-modal="true"
+                className="fixed z-50 lg:hidden left-4 right-4 top-20
+          rounded-2xl border bg-background shadow-xl
+             ring-1 ring-border/50 overflow-hidden"
+                >
+                  <div
+                    className="flex flex-col gap-6 p-6
+                               animate-in fade-in zoom-in-95 duration-150
+                               [--tw-enter-opacity:0] [--tw-enter-scale:0.98]"
+                  >
+                    {navigationItems.map((item) => (
+                      <div key={item.title} className="space-y-2">
+                        {item.href ? (
+                          <Link
+                            href={item.href}
+                            onClick={() => setOpen(false)}
+                            className="flex items-center justify-between text-lg"
+                          >
+                            <span>{item.title}</span>
+                            <MoveRight className="h-4 w-4 stroke-1 text-muted-foreground" />
+                          </Link>
+                        ) : (
+                          <p className="text-lg">{item.title}</p>
+                        )}
+
+                        {item.items?.map((sub) => (
+                          <Link
+                            key={sub.title}
+                            href={sub.href}
+                            onClick={() => setOpen(false)}
+                            className="flex items-center justify-between rounded-lg px-3 py-2 hover:bg-muted"
+                          >
+                            <span className="text-muted-foreground">{sub.title}</span>
+                            <MoveRight className="h-4 w-4 stroke-1" />
+                          </Link>
+                        ))}
+                      </div>
+                    ))}
+
+                    {/* Mobile-only actions */}
+                    <div className="mt-2 flex gap-3">
+                      <Button variant="secondary" className="flex-1" onClick={() => setOpen(false)}>
+                        Get in touch
+                      </Button>
+                      <Button className="flex-1" onClick={() => setOpen(false)}>
+                        Login
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </header>
-      {/* <header className="z-30 mt-2 w-full md:mt-5">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="relative flex h-14 items-center justify-stretch rounded-2xl">
- 
-            <div className="flex lg:justify-center">
-              <p className="font-semibold">CITADEL 19 logo</p>
-            </div>
-            <div className="container relative mx-auto min-h-20 flex gap-4 flex-row lg:grid lg:grid-cols-3 items-center">
-              <div className="justify-start items-center gap-4 lg:flex hidden flex-row">
-                <NavigationMenu className="flex justify-start items-start">
-                  <NavigationMenuList className="flex justify-start gap-4 flex-row">
-                    {navigationItems.map((item) => (
-                      <NavigationMenuItem key={item.title}>
-                        {item.href ? (
-                          <>
-                            <NavigationMenuLink>
-                              <Button variant="ghost">{item.title}</Button>
-                            </NavigationMenuLink>
-                          </>
-                        ) : (
-                          <>
-                            <NavigationMenuTrigger className="font-medium text-sm">
-                              {item.title}
-                            </NavigationMenuTrigger>
-                            <NavigationMenuContent className="!w-[450px] p-4">
-                              <div className="flex flex-col lg:grid grid-cols-2 gap-4">
-                                <div className="flex flex-col h-full justify-between">
-                                  <div className="flex flex-col">
-                                    <p className="text-base">{item.title}</p>
-                                    <p className="text-muted-foreground text-sm">
-                                      {item.description}
-                                    </p>
-                                  </div>
-                                  <Button size="sm" className="mt-10">
-                                    Book a call today
-                                  </Button>
-                                </div>
-                                <div className="flex flex-col text-sm h-full justify-end">
-                                  {item.items?.map((subItem) => (
-                                    <NavigationMenuLink
-                                      href={subItem.href}
-                                      key={subItem.title}
-                                      className="flex flex-row justify-between items-center hover:bg-muted py-2 px-4 rounded"
-                                    >
-                                      <span>{subItem.title}</span>
-                                      <MoveRight className="w-4 h-4 text-muted-foreground" />
-                                    </NavigationMenuLink>
-                                  ))}
-                                </div>
-                              </div>
-                            </NavigationMenuContent>
-                          </>
-                        )}
-                      </NavigationMenuItem>
-                    ))}
-                  </NavigationMenuList>
-                </NavigationMenu>
-              </div>
-
-              <div className="flex justify-end w-full gap-4">
-                <Button variant="ghost" className="hidden md:inline">
-                  Get in touch
-                </Button>
-                <div className="border-r hidden md:inline"></div>
-                <Button>Get started</Button>
-              </div>
-              <div className="flex w-12 shrink lg:hidden items-end justify-end">
-                <Button variant="ghost" onClick={() => setOpen(!isOpen)}>
-                  {isOpen ? (
-                    <X className="w-5 h-5" />
-                  ) : (
-                    <Menu className="w-5 h-5" />
-                  )}
-                </Button>
-                {isOpen && (
-                  <div className="absolute top-20 border-t flex flex-col w-full right-0 bg-background shadow-lg py-4 container gap-8">
-                    {navigationItems.map((item) => (
-                      <div key={item.title}>
-                        <div className="flex flex-col gap-2">
-                          {item.href ? (
-                            <Link
-                              href={item.href}
-                              className="flex justify-between items-center"
-                            >
-                              <span className="text-lg">{item.title}</span>
-                              <MoveRight className="w-4 h-4 stroke-1 text-muted-foreground" />
-                            </Link>
-                          ) : (
-                            <p className="text-lg">{item.title}</p>
-                          )}
-                          {item.items &&
-                            item.items.map((subItem) => (
-                              <Link
-                                key={subItem.title}
-                                href={subItem.href}
-                                className="flex justify-between items-center"
-                              >
-                                <span className="text-muted-foreground">
-                                  {subItem.title}
-                                </span>
-                                <MoveRight className="w-4 h-4 stroke-1" />
-                              </Link>
-                            ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </header> */}
     </ThemeProvider>
   );
 };

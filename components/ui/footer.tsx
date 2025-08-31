@@ -22,14 +22,14 @@ export default function Footer() {
         <div className="grid grid-cols-2 justify-between gap-12 py-8 sm:grid-rows-[auto_auto] md:grid-cols-4 md:grid-rows-[auto_auto] md:py-12 lg:grid-cols-[repeat(4,minmax(0,140px))_1fr] lg:grid-rows-1 xl:gap-20">
           {/* 1st block */}
           <div className="space-y-2">
-            <h3 className="text-sm font-medium text-gray-200">Product</h3>
+            <h3 className="text-sm font-medium text-gray-200">Services</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <a
                   className="text-red-200/65 transition hover:text-orange-500"
                   href="#0"
                 >
-                  Features
+                  Data Analysis
                 </a>
               </li>
               <li>
@@ -37,7 +37,7 @@ export default function Footer() {
                   className="text-red-200/65 transition hover:text-orange-500"
                   href="#0"
                 >
-                  Integrations
+                  Cloud Solutions
                 </a>
               </li>
               <li>
@@ -45,7 +45,7 @@ export default function Footer() {
                   className="text-red-200/65 transition hover:text-orange-500"
                   href="#0"
                 >
-                  Pricing &amp; Plans
+                  Web Development
                 </a>
               </li>
   
@@ -71,11 +71,19 @@ export default function Footer() {
                   Blog
                 </a>
               </li>
+              <li>
+                <a
+                  className="text-red-200/65 transition hover:text-orange-500"
+                  href="#0"
+                >
+                  Contact
+                </a>
+              </li>
             </ul>
           </div>
           {/* 3rd block */}
           <div className="space-y-2">
-            <h3 className="text-sm font-medium text-gray-200">Resources</h3>
+            {/* <h3 className="text-sm font-medium text-gray-200">Resources</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <a
@@ -101,11 +109,11 @@ export default function Footer() {
                   Report a vulnerability
                 </a>
               </li>
-            </ul>
+            </ul> */}
           </div>
           {/* 4th block */}
           <div className="space-y-2">
-            <h3 className="text-sm font-medium text-gray-200">
+            {/* <h3 className="text-sm font-medium text-gray-200">
               Content Library
             </h3>
             <ul className="space-y-2 text-sm">
@@ -126,9 +134,9 @@ export default function Footer() {
                 >
                   Learn
                 </a>
-              </li>
+              </li> 
 
-            </ul>
+            </ul>*/}
           </div>
           {/* 5th block */}
           <div className="col-span-2 md:col-span-4 lg:col-span-1 lg:text-right">

@@ -1,25 +1,25 @@
-import React, { useEffect } from "react";
-import {
-  createSpring,
-  utils,
-  createTimeline,
-  waapi,
-  animate,
-  svg,
-} from "animejs";
+"use client";
+import React, { useEffect, useState } from "react";
+import { createSpring, utils, createTimeline, waapi, animate, svg } from "animejs";
 import SVGLogo from "./c19svg";
 
 const Hero: React.FC = () => {
+  const [isDesktop, setIsDesktop] = useState(false);
+
   useEffect(() => {
-    utils.set([".security-icon"], {
-      opacity: 1,
-    });
+    const mq = window.matchMedia("(min-width: 768px)"); // md breakpoint
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener?.("change", update);
+    return () => mq.removeEventListener?.("change", update);
+  }, []);
 
-    const symbolAnimation = waapi.animate(".security-icon", {
-      x: 380,
-      reversed: true,
-    });
+  useEffect(() => {
+    if (!isDesktop) return; // do nothing on mobile
 
+    utils.set([".security-icon"], { opacity: 1 });
+
+    const symbolAnimation = waapi.animate(".security-icon", { x: 380, reversed: true });
     const traceFont = animate(svg.createDrawable(".line"), {
       draw: ["0 0", "0 1"],
       ease: "inOutQuad",
@@ -27,7 +27,6 @@ const Hero: React.FC = () => {
       duration: 3000,
       background: "#FF4B4B",
     });
-
     const logoText = waapi.animate(".logo-text", {
       color: "#fff",
       duration: 1000,
@@ -38,21 +37,18 @@ const Hero: React.FC = () => {
 
     const tl = createTimeline({});
     tl.add(".security-icon", {
-      translateY: {
-        to: [-280, 0],
-        ease: createSpring({ stiffness: 200 }),
-        duration: 4000,
-      },
-
+      translateY: { to: [-280, 0], ease: createSpring({ stiffness: 200 }), duration: 4000 },
       ease: "inOutQuad",
     })
       .sync(symbolAnimation, 315)
       .sync(traceFont, 1000)
       .sync(logoText, 2000);
-  }, []);
+  }, [isDesktop]);
+
+  if (!isDesktop) return null; // hide component entirely on mobile
 
   return (
-    <section style={{ padding: "2rem" }}>
+    <section className="md:block" style={{ padding: "2rem" }}>
       <div>
         <SVGLogo />
       </div>

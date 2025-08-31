@@ -1,6 +1,12 @@
 import Image from "next/image";
-import placeholder from "@/public/images/placeholder_image2.png";
+import placeholder from "@/public/images/data_insights.png";
 import Spotlight from "@/components/spotlight";
+
+import DataImg from "@/public/images/data_work_flow.png";
+// import CloudImg from "@/public/images/cloud_solutions.png";
+import CloudImg from "@/public/images/cloud.png";
+// import WebImg from "@/public/images/web_development.png";
+import WebImg from "@/public/images/web_dev_workflow.png";
 
 export default function Workflows() {
   return (
@@ -22,7 +28,7 @@ export default function Workflows() {
               create captivating websites that reflect your brand, leverage
               powerful data insights to drive smarter decisions, and ensure
               secure, scalable cloud integration to streamline your operations.
-              Let&apos;s build your digital future together—contact us today!
+              Let&apos;s build your digital future together contact us today!
             </p>
           </div>
           {/* Spotlight items */}
@@ -53,7 +59,7 @@ export default function Workflows() {
                 {/* Image */}
                 <Image
                   className="inline-flex"
-                  src={placeholder}
+                  src={DataImg}
                   width={350}
                   height={288}
                   alt="Workflow 01"
@@ -73,7 +79,7 @@ export default function Workflows() {
                   <p className="text-red-200/65">
                     Turn raw data into strategic insights. Our data analysis
                     services help you uncover trends and make smarter decisions.
-                    Unlock your business potential—connect with us now!
+                    Unlock your business potential connect with us now!
                   </p>
                 </div>
               </div>
@@ -104,7 +110,7 @@ export default function Workflows() {
                 {/* Image */}
                 <Image
                   className="inline-flex"
-                  src={placeholder}
+                  src={CloudImg}
                   width={350}
                   height={288}
                   alt="Workflow 02"
@@ -121,7 +127,7 @@ export default function Workflows() {
                   <p className="text-red-200/65">
                     Modernize your operations with smooth, scalable cloud
                     integration. We streamline your systems for enhanced
-                    efficiency and security. Elevate your business—get started
+                    efficiency and security. Elevate your business get started
                     with our cloud solutions today!
                   </p>
                 </div>
@@ -153,7 +159,7 @@ export default function Workflows() {
                 {/* Image */}
                 <Image
                   className="inline-flex"
-                  src={placeholder}
+                  src={WebImg}
                   width={350}
                   height={288}
                   alt="Workflow 03"
@@ -171,7 +177,7 @@ export default function Workflows() {
                     Bring your vision to life with a website that stands out.
                     Our expert developers craft seamless, responsive designs
                     tailored to your brand. Let&apos;s build your digital
-                    future—start today!
+                    future start today!
                   </p>
                 </div>
               </div>
